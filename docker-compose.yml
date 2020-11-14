@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/localhost/htdocs
+    entrypoint: [ "/bin/sh" , "/var/www/localhost/htdocs/entrypoint/example.sh" ]
+    tty: true
+    restart: on-failure
